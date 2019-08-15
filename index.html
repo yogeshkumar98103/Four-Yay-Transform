@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Four YAY</title>
+
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet"> -->
+
+    <!------------------------------ Libraries ------------------------------->
+    <script src = "scripts/Libraries/p5.min.js"></script>
+    <script src = "scripts/Libraries/d3.min.js"></script>
+    
+</head>
+
+<body>
+    <div id = "canvas"></div>
+
+    <div id = "drawing-pane" class = "pane">
+        <div class="control-container">
+            <label for = "speed-value" class = "text control-text">Speed</label>
+            <input type = "range"  min = "1" max = "100" value = "50" class = "control-slider" id = "speed-slider">
+            <input type = "number" min = "1" max = "100" value = "50" class = "control-value text"  id = "speed-value" name = "speed-value">
+        </div>
+
+        <div class="control-container">
+            <label for = "term-value" class = "text control-text">Terms</label>
+            <input type = "range"  min = "1" max = "1000" value = "100" class = "control-slider" id = "term-slider">
+            <input type = "number" min = "1" max = "1000" value = "100" class = "control-value text"  id = "term-value" name = "term-value">
+        </div>
+
+        <div id = "start-selection-container">
+            <button class = "button text" onclick = "setUpSelectionMode()">Choose Another</button>
+        </div>
+        <div id = "redraw-container">
+            <button class = "button text" onclick = "reDraw()">Redraw</button>
+        </div>
+
+        <div id = "mode-selector-container">
+            <div id = "mode-mask"></div>
+            <button class = "mode-button text" id = "left-mode-btn"  onclick = "setMode(1)" autofocus>Single</button>
+            <button class = "mode-button text" id = "right-mode-btn" onclick = "setMode(2)">Dual</button>
+        </div>
+    </div>
+    
+    <div id = "selection-pane" class = "pane">
+        <div id = "file-drop-area">
+            <span id = "drop-text">Drag and Drop File Here</span>
+        </div>
+        <div id = "select-file-container">
+            <input type = "file" name = "select-file" id = "select-file" onchange = "handleFile(this.files[0])">
+            <label for = "select-file" id = "select-file-label" class = "text">Select File</label>
+
+            <button class = "text button" id = "samples-button" onclick = "toggleSamples()">Samples</button>
+        </div>
+        <div id = "point-count-container">
+            <label for = "point-count" id = "point-count-label" class = "text">Number Of Points</label>
+            <input type = "number" min = "20" max = "5000" value = "200" name = "point-count" id = "point-count" class = "text" onchange = "handleNumberOfPoints()">
+        </div>
+        <div id = "start-drawing-container">
+            <button class = "text button" onclick = "setUpDrawingMode()">Start Drawing</button>
+        </div>
+    </div>
+</body>
+<script src = "scripts/Fourier Term.js"></script>
+<script src = "scripts/Fourier Series.js"></script>
+<script src = "scripts/main.js"></script>
+<script src = "scripts/Get Points.js"></script>
+<script src = "scripts/Select Files.js"></script>
+<script src = "scripts/controls.js"></script>
+</html>

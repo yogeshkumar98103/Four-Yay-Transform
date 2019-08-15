@@ -1,0 +1,356 @@
+body, html{
+    width : 100%;
+    height : 100%;
+    padding : 0;
+    margin : 0;
+    overflow: hidden;
+    background: #333;
+}
+
+#canvas{
+    display : inline-block;
+    position : absolute;
+    left : 0px;
+    top : 0px;
+    width: 73%;
+    height : 100%;
+    padding : 0;
+    background-color:#333;
+}
+
+.text{
+    font-family: 'Roboto', sans-serif;
+    font-size : 16px;
+    color : #fff;
+    text-align: center;
+}
+
+.pane{
+    display:inline-block;
+    position : absolute;
+    right : 0px;
+    height : 100%;
+    box-sizing: border-box;
+    background-color : #222; 
+    padding : 10px;
+}
+
+/* ================================================ */
+/*                 Selection Pane                   */
+/* ================================================ */
+
+#selection-pane{
+    top : 0px;
+    width : 27%;
+    transition: all .5s ease-out;
+    -webkit-transition: all .5s ease-out;
+}
+
+/* ------------------------ Drag and Drop ----------------------- */
+#file-drop-area{
+    position : relative;
+    width : 100%;
+    height : 50%;
+    background: #77777766;
+    overflow: hidden;
+    /* opacity: 0.5;  */
+}
+#drop-text{
+    color : #fff;
+    position: absolute;
+    top : 50%;
+    transform: translate(0%, -50%);
+    text-align: center;
+    font-size : 18px;
+    font-family : Helvetica;
+    opacity: 0.5;
+    width : 100%;
+}
+
+.hidden{
+    display : none;
+}
+
+.preview-image{
+    width : 100%;
+    height : 100%;
+    object-fit: contain;
+}
+
+/* ------------------------- Select File ------------------------- */
+#select-file-container{
+    margin: 10px 0;
+    position: relative;
+}
+
+#select-file{
+    position: absolute;
+    width : 0.1px;
+    height : 0.1px;
+    overflow: hidden;
+    z-index: -1;
+    opacity : 0;
+}
+
+#select-file-label{
+    display: inline-block;
+    color : #fff;
+    background-color: #f00; 
+    padding : 10px;
+    border-radius: 10px;
+    font-size: 18px;
+}
+
+
+#samples-button{
+    position: relative;
+    right: 80px;
+    margin-right: 100px;
+    box-sizing: border-box;
+}
+
+/* ----------------------- Number Of Points ---------------------- */
+
+#point-count-container{
+    margin-top : 40px;
+}
+
+#point-count{
+    background-color: #555;
+    border : 0;
+    height : 20px;
+    width : 60px;
+}
+
+#point-count-label{
+    margin-right : 10px;
+}
+
+/* ------------------------- Start Drawing ---------------------- */
+#start-drawing-container{
+    margin-top : 80px; 
+}
+
+.button{
+    background-color : red;
+    border: none;
+    outline : none;
+    padding : 10px 20px;
+    border-radius: 10px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    font-size: 18px;
+    white-space: nowrap;
+}
+
+/* ================================================ */
+/*                   Drawing Pane                   */
+/* ================================================ */
+
+#drawing-pane{
+    bottom:0;
+    height: 25%;
+    width: 27%;
+    border-radius: 30px;
+    padding: 10px 20px;
+}
+
+.control-container{
+    position: relative;
+    width: 100%;
+    height : 40px;
+}
+
+.control-value{
+    right : 0px;
+    width: 60px;
+    background: #555;
+    border : 0;
+    border-radius: 10px;
+}
+
+.control-value:focus{
+    border-radius: 0;
+}
+
+#start-selection-container{
+    position: absolute;
+    left : 0;
+    top: 60%;
+    width: 60%;
+}
+
+#redraw-container{
+    position:absolute;
+    right: 0;
+    top: 60%;
+    width: 40%;
+}
+
+#mode-selector-container{
+    position: absolute;
+    bottom: 100%;
+    right : 0;
+    width : 40%;
+    height: 30px;
+    background: #222;
+    border-radius: 15px 15px 0 0;
+    padding: 10px, 5px;
+    box-sizing: border-box;
+}
+
+.mode-button{
+    background-color: #00000000;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+    color: #fff;
+    width: 45%;
+    height: 75%;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 2px;
+    margin: 0 2px;
+    box-sizing: border-box;
+}
+
+#mode-mask{
+    position: absolute;
+    width: 45%;
+    height: 80%;
+    top: 5px;
+    left: 5px;
+    /* transform: translateY(-50%); */
+    border-radius: 20px;
+    background-color: red; 
+    transition: transform 0.2s linear;
+    -webkit-transition: transform 0.2s linear;
+}
+
+.move-right{
+    transform: translateX(105%);
+    -webkit-transform: translateX(105%);
+}
+
+.move-left{
+    transform: translateX(0%);
+    -webkit-transform: translateX(0%);
+}
+
+/* ------------------------- Slider ---------------------- */
+  
+.control-slider{
+    position: absolute;
+    top : 12px;
+    display: block;
+    -webkit-appearance: none;  
+    appearance: none;
+    right : 80px;
+    width: 40%; 
+    height: 10px; 
+    border-radius: 5px;
+    background: #555; 
+    -webkit-transition: .2s; 
+    transition: opacity .2s;
+}
+  
+.control-value, .control-text{
+    position: absolute;
+    top: 50%;
+    transform: translate(0%, -50%);
+}
+
+.control-slider::-webkit-slider-thumb {
+    -webkit-appearance: none; 
+    appearance: none;
+    width: 10px; 
+    height: 10px; 
+    border-radius: 50%;
+    background: #fff;
+    cursor: pointer; 
+  }
+
+.control-slider::-moz-range-thumb {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #fff;
+    cursor: pointer;
+}
+
+/* ================================================ */
+/*                     Sample                       */
+/* ================================================ */
+
+.sample-container{
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    background-color: #333;
+    transition: transform .5s ease-out;
+    -webkit-transition: transform .5s ease-out;
+}
+
+.sample-container-title{
+    position: relative;
+    height: 30px;
+    width: 100%;
+    text-align:center;
+    font-size: 19px;
+    color: red;
+    font-weight: 600;
+    margin-bottom : 20px;
+}
+
+.samples-list{
+    position: relative;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+}
+
+.sample{
+    display: inline-block;
+    width: 100%;
+    height: 30px;
+    text-align: right;
+    padding-right : 20px;
+    box-sizing: border-box;
+    transition: all .2s ease-in-out;
+    cursor: pointer;
+}
+
+.sample:hover{
+    background-color : #111;
+    color : red;
+    font-weight: 600;
+    transform : scale(1.1);
+}
+
+/* ================================================ */
+/*                   Animations                     */
+/* ================================================ */
+
+.showSelectionPane{
+    transform: translateY(0%);
+    -webkit-transform: translateY(0%);
+    opacity: 1;
+}
+
+.hideSelectionPane{
+    transform: translateY(100%);
+    -webkit-transform: translateY(100%);
+    opacity: 0;
+}
+
+.showSamples{
+    transform: translateY(-100%);
+    -webkit-transform: translateY(-100%);
+}
+
+.hideSamples{
+    transform: translateY(0%);
+    -webkit-transform: translateY(0%);
+}
